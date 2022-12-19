@@ -47,5 +47,9 @@ public class HomePage extends TestBase {
 		driver.findElement(By.xpath("//span[contains(text(),'Marketplace')]")).click();
 		return new MarketplacePage();
 	}
+	
+	public String vldMPUrl() {
+		return driver.getCurrentUrl();
+	}
 
 }

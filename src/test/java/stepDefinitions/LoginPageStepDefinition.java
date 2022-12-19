@@ -17,7 +17,6 @@ import pages.LoginPage;
 public class LoginPageStepDefinition extends TestBase {
 
 	LoginPage lp = new LoginPage();
-	
 
 	@Given("user is already on login page")
 	public void user_is_already_on_login_page() {
@@ -49,7 +48,7 @@ public class LoginPageStepDefinition extends TestBase {
 				.getScreenshotAs(OutputType.FILE);
 		String currentDir = System.getProperty("user.dir");
 		System.out.println(currentDir);
-		FileUtils.copyFile(srcFile, new File(currentDir + "/screenshots/logo/" + System.currentTimeMillis() + ".png"));
+		FileUtils.copyFile(srcFile, new File(currentDir + " logo/" + System.currentTimeMillis() + ".png"));
 	}
 
 	@Then("login page element should be displayed")
@@ -73,19 +72,19 @@ public class LoginPageStepDefinition extends TestBase {
 		lp.enterDetails(fname, sname, eml, mnum);
 	}
 
-	/*@Then("user select date of birth")
-	public void user_select_date_of_birth() {
-		lp.enterDOB();
-	}*/
+	/*
+	 * @Then("user select date of birth") public void user_select_date_of_birth() {
+	 * lp.enterDOB(); }
+	 */
 
 	@Then("user select Gender")
 	public void user_select_gender() {
 		lp.enterGender();
 	}
-	
+
 	@Then("user close")
 	public void user_close() {
-	    lp.closePop();
+		lp.closePop();
 	}
 
 	@Then("user enter email {string} and {string}")

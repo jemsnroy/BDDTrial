@@ -38,6 +38,7 @@ Scenario Outline: Login page create new account test
 		#Then user select date of birth
 		Then user select Gender
 		Then user close
+		Then user quit
 
 Examples: 
 |First name|Surname		|email							 |New Password   |

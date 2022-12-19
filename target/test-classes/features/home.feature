@@ -18,23 +18,30 @@
 #Sample Feature Definition Template
 Feature: Facebook home page features
 
-Scenario: home page username test
+Background:
 		Given user is already on home page
 		|email|password|
 		|jemish1023@gmail.com|Sarang123@|
+
+Scenario: home page username test
+		Given user is on home page
 		When user get the user name
 		Then user name should be "Jemish Roy"
-		Then user gets list of webelements
+		Then user quit
+		
+Scenario: home page elements test
+	Given user is on home page
+	When user get list of webelements
 		|Friends|
 		|Marketplace|
 		|Most recent|
 		|Groups| 
 		|Watch|
 		|Memories|
-		And number of elements should be 6
-		Then user quit
-		
-Scenario: home page elements test
-	Given user is already on home page
-		
+	Then number of elements should be 6
+	Then user click on Marketplace option
+	Then user get the url of marketplace page
+	And the url of marketplace page should be "https://www.facebook.com/marketplace/?ref=bookmark" 
+	Then user quit
+	
 	#	Then user click on marketplace

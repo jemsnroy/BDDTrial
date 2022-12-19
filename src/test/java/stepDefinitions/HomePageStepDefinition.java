@@ -12,11 +12,13 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.HomePage;
 import pages.LoginPage;
+import pages.MarketplacePage;
 
 public class HomePageStepDefinition extends TestBase {
 
-	 LoginPage lp = new LoginPage();
-	 HomePage hp;
+	LoginPage lp = new LoginPage();
+	HomePage hp;
+	MarketplacePage mp;
 
 	@Given("user is already on home page")
 	public void user_is_already_on_home_page(DataTable credTable) {
@@ -41,16 +43,16 @@ public class HomePageStepDefinition extends TestBase {
 		String actUserName = hp.getUserName();
 		Assert.assertEquals(expUserName, actUserName);
 	}
-	
+
 	@Given("user is on home page")
 	public void user_is_on_home_page() {
-	   String actURL = hp.getHPURL();
-	   Assert.assertTrue(actURL.equals(actURL));
-	   
+		String actURL = hp.getHPURL();
+		Assert.assertTrue(actURL.equals(actURL));
+
 	}
 
-	@Then("user gets list of webelements")
-	public void user_gets_list_of_webelements(DataTable expList) {
+	@When("user get list of webelements")
+	public void user_get_list_of_webelements(DataTable expList) {
 		List<String> expEleList = expList.asList();
 		List<String> actualEleList = hp.getElement();
 		Assert.assertTrue(expEleList.containsAll(actualEleList));
@@ -64,10 +66,22 @@ public class HomePageStepDefinition extends TestBase {
 
 	}
 
-	/*@Then("user click on marketplace")
-	public void user_click_on_marketplace() {
-		hp.clkMktBtn();
+	@Then("user click on Marketplace option")
+	public void user_click_on_marketplace_option() {
+		mp = hp.clkMktBtn();
+	}
 
-	}*/
+	@Then("user get the url of marketplace page")
+	public void user_get_the_url_of_marketplace_page() {
+		String actMPUrl = hp.vldMPUrl();
+		System.out.println(actMPUrl);
+	}
+
+	@Then("the url of marketplace page should be {string}")
+	public void the_url_of_marketplace_page_should_be(String mpURL) {
+		String expMPUrl = mpURL;
+		String actMPUrl = hp.vldMPUrl();
+		Assert.assertTrue(actMPUrl.equals(expMPUrl));
+	}
 
 }
